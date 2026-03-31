@@ -1,0 +1,143 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #ffffff;
+  text-align: center;
+  padding: 24px;
+}
+
+/* VIDEO BACKGROUND */
+.video-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+/* DARK OVERLAY */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: -1;
+}
+
+/* CONTAINER */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  max-width: 900px;
+  width: 100%;
+}
+
+/* LOGO */
+.graphic {
+  width: min(420px, 80vw);
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.5));
+  transition: transform 0.3s ease;
+}
+
+.graphic:hover {
+  transform: scale(1.05);
+}
+
+/* MAIN BOX */
+.countdown-wrapper {
+  background: rgba(10, 14, 25, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 28px;
+  padding: 32px;
+  width: min(820px, 100%);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+}
+
+/* TITLE */
+h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 12px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* DATE */
+.target-date {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+/* COUNTDOWN GRID */
+.countdown {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(110px, 1fr));
+  gap: 18px;
+}
+
+/* BOXES */
+.time-box {
+  background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.05));
+  border-radius: 22px;
+  padding: 24px 16px;
+  border: 1px solid rgba(255,255,255,0.18);
+  box-shadow: 
+    inset 0 1px 0 rgba(255,255,255,0.1),
+    0 12px 30px rgba(0,0,0,0.3);
+}
+
+/* NUMBERS */
+.number {
+  display: block;
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 10px;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 6px 18px rgba(0,0,0,0.6);
+}
+
+/* LABELS */
+.label {
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  font-weight: 700;
+}
+
+/* FINISHED */
+.finished {
+  font-size: clamp(1.5rem, 4vw, 2.3rem);
+  font-weight: 700;
+  padding: 20px;
+}
+
+/* MOBILE */
+@media (max-width: 640px) {
+  .countdown {
+    grid-template-columns: repeat(2, minmax(120px, 1fr));
+  }
+}

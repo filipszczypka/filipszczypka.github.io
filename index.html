@@ -1,0 +1,76 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZBIRY SMP - SEZON 2</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <video class="video-bg" autoplay muted loop playsinline>
+    <source src="video/tlo.mp4" type="video/mp4">
+  </video>
+  <div class="overlay"></div>
+
+  <div class="container">
+    <img
+      class="graphic"
+      alt="Grafika centralna"
+      src="grafiki/zbirylogo.png"
+    />
+
+    <div class="countdown-wrapper">
+      <h1>ZBIRY SMP - SEZON 2</h1>
+      <div class="target-date">1 lipca 2026, godzina 18:00</div>
+
+      <div id="countdown" class="countdown">
+        <div class="time-box">
+          <span id="days" class="number">0</span>
+          <span class="label">Dni</span>
+        </div>
+        <div class="time-box">
+          <span id="hours" class="number">0</span>
+          <span class="label">Godzin</span>
+        </div>
+        <div class="time-box">
+          <span id="minutes" class="number">0</span>
+          <span class="label">Minut</span>
+        </div>
+        <div class="time-box">
+          <span id="seconds" class="number">0</span>
+          <span class="label">Sekund</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const targetDate = new Date('2026-07-01T18:00:00');
+    const countdownElement = document.getElementById('countdown');
+
+    function updateCountdown() {
+      const now = new Date();
+      const difference = targetDate - now;
+
+      if (difference <= 0) {
+        countdownElement.innerHTML = '<div class="finished">Czas minął</div>';
+        return;
+      }
+
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((difference / (1000 * 60)) % 60);
+      const seconds = Math.floor((difference / 1000) % 60);
+
+      document.getElementById('days').textContent = days;
+      document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+      document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+      document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
